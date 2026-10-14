@@ -1,0 +1,34 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/
+*.db
+*.sqlite
+*.sqlite3
+
+# Local secrets
+.env.local
+.env
+.env.*
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+
+# Local backups and diagnostic scripts
+*.backup
+*.bak
+*.before-*
+*-backup/
+check-admin*.mjs
+create-admin*.mjs
+
+# Backup folders and diagnostic backups
+*-backup*/
+*.health-backup
+
+# Local database backups
+backups/
