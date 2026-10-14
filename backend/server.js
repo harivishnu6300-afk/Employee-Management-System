@@ -64,9 +64,14 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (mobile apps, curl, server-to-server)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+    const isAllowed =
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/employee-management-system-qk7a(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(origin);
+
+    if (isAllowed) {
       return callback(null, true);
     }
+    console.error(`CORS blocked origin: ${origin}`);
     return callback(new Error(`CORS: Origin ${origin} not allowed`));
   },
   credentials: true,
@@ -143,6 +148,7 @@ if (!process.env.VERCEL) {
 
 export { app, server };
 export default app;
+
 
 
 
